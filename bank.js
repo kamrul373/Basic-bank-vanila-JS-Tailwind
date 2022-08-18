@@ -3,20 +3,20 @@
 // adding event listner
 
 document.getElementById("btn-deposit").addEventListener("click", function (event) {
-    // getting current deposit amount 
-    const currentDepositContainer = document.getElementById("current-deposit");
-    let currentDepositAmount = currentDepositContainer.innerText;
-    currentDepositAmount = parseFloat(currentDepositAmount);
+    // getting new depsit amount
+    const newDepositContainer = getElementById("deposit-amount");
+    const newDepositAmount = getInputValue("deposit-amount");
 
     // getting current balance amount
-    const currentBalanceContainer = document.getElementById("current-balance");
-    let currentBalanceAmount = currentBalanceContainer.innerText;
-    currentBalanceAmount = parseFloat(currentBalanceAmount);
+    const currentBalanceContainer = getElementById("current-balance");
+    const currentBalanceAmount = getElementInnerTextById("current-balance");
 
-    // getting new depsit amount
-    const newDepositContainer = document.getElementById("deposit-amount");
-    let newDepositAmount = newDepositContainer.value;
-    newDepositAmount = parseFloat(newDepositAmount);
+    if (newDepositAmount == 0) {
+        return alert("You cant deposit empty");
+    }
+    // getting current deposit amount 
+    const currentDepositContainer = getElementById("current-deposit");
+    const currentDepositAmount = getElementInnerTextById("current-deposit");
 
     // calculation of deposit
     let depositTotal = currentDepositAmount + newDepositAmount;
@@ -33,20 +33,23 @@ document.getElementById("btn-deposit").addEventListener("click", function (event
 });
 
 document.getElementById("btn-withdraw").addEventListener("click", function (event) {
-    // getting current withraw 
-    const withdrawContainer = document.getElementById("current-withraw");
-    let currentWithdrawAmount = withdrawContainer.innerText;
-    currentWithdrawAmount = parseFloat(currentWithdrawAmount);
+    // getting new withdraw amount 
+    const newWithdrawContainer = getElementById("withdraw-amount");
+    const newWithdrawAmount = getInputValue("withdraw-amount");
 
     // getting current balance amount
     const currentBalanceContainer = document.getElementById("current-balance");
-    let currentBalanceAmount = currentBalanceContainer.innerText;
-    currentBalanceAmount = parseFloat(currentBalanceAmount);
+    const currentBalanceAmount = getElementInnerTextById("current-balance");
 
-    // getting new withdraw amount 
-    const newWithdrawContainer = document.getElementById("withdraw-amount");
-    let newWithdrawAmount = newWithdrawContainer.value;
-    newWithdrawAmount = parseFloat(newWithdrawAmount);
+    if (newWithdrawAmount == 0) {
+        return alert("You cant withdraw 0 $");
+    }
+    if (currentBalanceAmount == 0 || newWithdrawAmount > currentBalanceAmount) {
+        return alert("Your blance is insufficient ! Please deposit ");
+    }
+    // getting current withraw 
+    const withdrawContainer = document.getElementById("current-withraw");
+    const currentWithdrawAmount = getElementInnerTextById("current-withraw");
 
     // withdraw calculation 
 
